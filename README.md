@@ -1,0 +1,28 @@
+# Ledgerline
+
+A small ledger service: accounts, transactions and transfers over a JSON file
+store. Node 22, Express, zod, vitest.
+
+```bash
+npm ci
+npm test          # vitest
+npm run lint      # eslint, zero warnings allowed
+npm run typecheck # tsc --noEmit
+npm run dev       # http://localhost:3000
+```
+
+Every request needs an API key in `X-Api-Key` (see `data/keys.json`; the
+seeded key is `key_demo_1`). Responses are JSON. Errors follow
+`{ "error": "<CODE>", "message": "..." }`.
+
+| method | path | notes |
+| --- | --- | --- |
+| GET | `/accounts` | all accounts |
+| GET | `/accounts/:id` | one account with its balance |
+| GET | `/accounts/:id/transactions?page=&pageSize=` | newest first, paginated |
+| POST | `/accounts/:id/transactions` | `{ amountCents, memo }` (positive credits, negative debits) |
+| GET | `/health` | liveness |
+
+Design notes live in `docs/` (architecture decision records are numbered
+`adr-NNN`). Contributions: keep `npm test`, `npm run lint` and
+`npm run typecheck` green.

@@ -1,0 +1,4 @@
+[
+  { "key": "key_demo_1", "label": "demo (free)", "tier": "free" },
+  { "key": "key_demo_pro", "label": "demo (pro)", "tier": "pro" }
+]
