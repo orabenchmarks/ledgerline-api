@@ -13,7 +13,7 @@ COPY tests ./tests
 COPY docs ./docs
 COPY data/keys.json ./data/keys.json
 COPY docker/runner.sh /runner.sh
-RUN chmod +x /runner.sh && chown -R 1001:1001 /app
+RUN chmod +x /runner.sh && chown -R 1001:1001 /app && mkdir -p /work && chown 1001:1001 /work
 USER 1001
 ENV HOME=/tmp
 ENTRYPOINT ["/runner.sh"]
